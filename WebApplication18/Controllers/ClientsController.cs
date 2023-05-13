@@ -49,11 +49,17 @@ namespace WebApplication18.Controllers
         private readonly ClientContext _context;
         private string CreateToken(Client client)
         {
-            List<Claim> claims = new List<Claim>
-           {
-        new Claim(ClaimTypes.Name, client.firstName),
-        new Claim(ClaimTypes.Email, client.email)
-             };
+            List<Claim> claims = new List<Claim>();
+            if (client.phonenumber != null)
+            {
+                claims.Add(new Claim(ClaimTypes.MobilePhone, client.phonenumber));
+
+            }
+            else if (client.email != null)
+            {
+                claims.Add(new Claim(ClaimTypes.Email, client.email));
+            }
+
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:token").Value));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var token = new JwtSecurityToken(
@@ -82,21 +88,21 @@ namespace WebApplication18.Controllers
         }
 
         // GET: api/Clients/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<string>> GetClient(int id)
+        [HttpGet("{phonenumber}")]
+        public async Task<ActionResult<string>> GetClient(string phonenumber)
         {
           if (_context.Clients == null)
           {
               return NotFound();
           }
-            var client = await _context.Clients.FindAsync(id);
+            var client = await _context.Clients.FirstOrDefaultAsync(u => u.phonenumber  == phonenumber);
 
             if (client == null)
             {
                 return NotFound();
             }
 
-            return CreateToken(client);
+            return Ok( CreateToken(client));
         }
        
         // PUT: api/Clients/5
@@ -142,7 +148,7 @@ namespace WebApplication18.Controllers
             _context.Clients.Add(client);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClient", new { id = client.Id }, client);
+            return Ok(client);
         }
 
 

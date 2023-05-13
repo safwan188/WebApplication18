@@ -20,6 +20,6 @@ namespace WebApplication18.Data
         public DbSet<WebApplication18.Models.menu_item>? menu_item { get; set; }
         public DbSet<WebApplication18.Models.itemoptions>? itemoptions { get; set; }
         public DbSet<WebApplication18.Models.option>? option { get; set; }
-        
+
     }
 }

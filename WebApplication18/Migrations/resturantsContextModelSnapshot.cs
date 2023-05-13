@@ -80,6 +80,12 @@ namespace WebApplication18.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("itemimageid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("price")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
                     b.HasIndex("categorieid");
@@ -127,9 +133,18 @@ namespace WebApplication18.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("deliverytimeminutes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageid")
+                        .HasColumnType("int");
+
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("reviews")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 

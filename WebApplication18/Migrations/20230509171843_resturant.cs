@@ -4,7 +4,7 @@
 
 namespace WebApplication18.Migrations
 {
-    public partial class resturants : Migration
+    public partial class resturant : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,10 @@ namespace WebApplication18.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    adress = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    adress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    reviews = table.Column<int>(type: "int", nullable: false),
+                    deliverytimeminutes = table.Column<int>(type: "int", nullable: false),
+                    imageid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -49,7 +52,9 @@ namespace WebApplication18.Migrations
                     id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     categorieid = table.Column<int>(type: "int", nullable: false),
-                    item_name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    price = table.Column<int>(type: "int", nullable: false),
+                    item_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    itemimageid = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

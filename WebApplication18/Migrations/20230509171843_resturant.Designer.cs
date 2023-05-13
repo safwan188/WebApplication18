@@ -11,8 +11,8 @@ using WebApplication18.Data;
 namespace WebApplication18.Migrations
 {
     [DbContext(typeof(resturantsContext))]
-    [Migration("20230406140244_resturants")]
-    partial class resturants
+    [Migration("20230509171843_resturant")]
+    partial class resturant
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -82,6 +82,12 @@ namespace WebApplication18.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("itemimageid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("price")
+                        .HasColumnType("int");
+
                     b.HasKey("id");
 
                     b.HasIndex("categorieid");
@@ -129,9 +135,18 @@ namespace WebApplication18.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("deliverytimeminutes")
+                        .HasColumnType("int");
+
+                    b.Property<int>("imageid")
+                        .HasColumnType("int");
+
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("reviews")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 

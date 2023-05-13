@@ -29,6 +29,8 @@ builder.Services.AddDbContext<restcatContext>(
     o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 builder.Services.AddDbContext<clientorderContext>(
     o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
+builder.Services.AddDbContext<imageContext>(
+    o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
 
 builder.Services.AddDbContext<homecatContext>(
     o => o.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));

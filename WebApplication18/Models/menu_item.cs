@@ -8,8 +8,11 @@ namespace WebApplication18.Models
         public int id { get; set; }
         [ForeignKey("categorie")]
         public int categorieid { get; set; }
+        public int price { get; set; }
         public string item_name { get; set; }
         public List<itemoptions> itemoptions { get; set; }=new List<itemoptions>();
+        [ForeignKey("images")]
+        public int itemimageid { get; set; }    
 
     }
 }
